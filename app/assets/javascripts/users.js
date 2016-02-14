@@ -1,25 +1,24 @@
 /*global Stripe*/
-
 $(document).ready(function() {
   Stripe.setPublishasbleKey($('meta[name="stripe-key"]').attr('content'));
   // Watch for form submission:
   $("#form-submit-btn").click(function(event){
-      event.preventDefaault();
+      event.preventDefault();
       $('input[type=submit]').prop('disabled', true);
       var error = false;
-      var cdNum = $('#card_number').val(),
-          cvcNum = $('card_code').val(),
-          expMonth = $('card_month'),
+      var ccNum = $('#card_number').val(),
+          cvcNum = $('#card_code').val(),
+          expMonth = $('#card_month'),
           expYear = $('#card_year').val();
           
    if (!error) {
      // Get the Stripe token:
-     Stripe.createToken[{
-         number: cdNum,
+     Stripe.createToken({
+         number: ccNum,
          cvc: cvcNum,
          exp_month: expMonth,
          exp_year: expYear
-     },   stripeResponseHandler];
+     },   stripeResponseHandler);
    }
    return false;
   }); // form submission
