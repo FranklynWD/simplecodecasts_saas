@@ -1,6 +1,6 @@
 /*global Stripe*/
 $(document).ready(function() {
-  Stripe.setPublishasbleKey($('meta[name="stripe-key"]').attr('content'));
+  Stripe.setPublishasbleKey($ ('meta[name="stripe-key"]').attr('content'));
   // Watch for form submission:
   $("#form-submit-btn").click(function(event) {
       event.preventDefault();
@@ -31,7 +31,7 @@ $(document).ready(function() {
           var token = response.id;
           
           // Add the token to the form:
-          f.append('<input type="hidden" name="user[stripe_card_token]" value"' + token + '" />');
+          f.append('<input type="hidden" name="user[stripe_card_token]" value="' +  token  + '" />');
         
          // Submit the form:
          f.get(0).submit();
